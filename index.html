@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+
+<head>
+
+<title>Bond Party Facetrace Output</title>
+<style type="text/css">
+
+	table {
+		margin: 0px auto;	
+	}
+	
+	#header {
+		margin: 0px auto;
+		text-align: center;
+	}
+
+	.title {
+		text-align: center;
+		font-size: 20pt;
+		margin: 20px 0px 0px 0px;
+	}
+
+	.spacer {
+		width: 10px;
+	}
+
+	.svgComparison .imageSource {
+		width: 500px;
+		height: 333px;
+		margin-top: 25px;
+	}
+	
+	.svgComparison .svgContainer {
+		width: 600px;
+		height: 400px;
+		margin-top: 26px;
+		border: 1px solid black;
+	}
+	
+	.svgOutput {
+		display: block;
+		width: 501px;
+		height: 334px;
+		padding: 5px;
+		margin: 26px auto;
+		
+	}
+	
+	#wrapperProto {
+		
+		display: none;
+	}
+	
+</style>
+
+
+</head>
+
+<body>
+
+	<div id="header">
+		<h1>Bond Party FaceTraces</h1>
+		<p>Pictures and SVG output from the 1/29/16 Bond Holiday Party</p>
+	</div>
+
+
+	<div id="showcase"></div>
+	
+	<div id="wrapperProto" class="wrapper">
+		<table>
+		<tr>
+			<td class="timestamp" class="title" colspan="3"><p>6:05 PM</p></td>
+		</tr>
+		
+		<tr class="svgComparison">
+			<td><img class="imageSource" src="images/6.05.jpg"/></td>
+			<td class="spacer">&nbsp;</td>
+			<td>
+				<div class="svgContainer">
+					<img class="svgOutput" src="svgs/6.05.svg"/>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3"><hr/></td>
+		</tr>
+		</table>
+		
+	</div>
+
+	
+</table>
+	
+
+</body>
+
+<script type="text/javascript">
+	
+	var theFunStuff = [
+		"5.52",
+		"6.01",
+		"6.05",		
+		"6.53",
+		"7.00",
+		"7.05",
+		"7.07",
+		"7.09",
+		"7.22",
+		"7.25",
+		"7.27",
+		"7.29",
+		"7.35",		
+		"8.02",
+		"8.04",
+		"8.08",
+		"8.11",
+		"8.14",
+		"8.22",
+		"8.25",
+		"8.28",
+		"8.33",
+		"8.51",		
+		"8.58",
+		"9.07",
+		"9.12",
+		"9.56",
+		"10.15",
+		"10.32",
+		"10.37",
+		"10.42",
+		"10.55",
+		"11.09",
+		"11.31"
+		
+	];
+	
+	var containerProto = document.querySelector('#wrapperProto');
+	var showcase = document.querySelector('#showcase');
+		
+
+	function addPhoto(element,index,array){
+		
+		console.log(element);
+		
+		var duplicate = containerProto.cloneNode(true);
+		duplicate.removeAttribute('id');
+		
+		var imageSource = duplicate.getElementsByClassName('imageSource');
+		var svg = duplicate.getElementsByClassName('svgOutput');
+		var timestamp = duplicate.getElementsByClassName('timestamp');
+		
+		//console.log(imageSource[0]);
+		
+		imageSource[0].setAttribute('src','images/' + element + '.jpg');
+		svg[0].setAttribute('src','svgs/' + element + '.svg');
+		timestamp[0].innerHTML = '<p class="title">' + element.replace('.',':') + '&nbsp;<small>PM</small></p>';		
+		
+		showcase.appendChild(duplicate);
+	}
+	
+	theFunStuff.forEach(addPhoto);
+
+</script>
+</html>
